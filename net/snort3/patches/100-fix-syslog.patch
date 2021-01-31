@@ -1,0 +1,12 @@
+diff -u --recursive snort3-3.1.0.0-vanilla/src/loggers/alert_syslog.cc snort3-3.1.0.0/src/loggers/alert_syslog.cc
+--- snort3-3.1.0.0-vanilla/src/loggers/alert_syslog.cc	2021-01-14 08:53:06.000000000 -0600
++++ snort3-3.1.0.0/src/loggers/alert_syslog.cc	2021-01-31 10:01:03.487240084 -0600
+@@ -187,7 +187,7 @@
+ 
+ bool SyslogModule::end(const char*, int, SnortConfig* sc)
+ {
+-    if ( sc->daemon_mode() )
++    if ( sc && sc->daemon_mode() )
+         options |= LOG_PID;
+ 
+     return true;
